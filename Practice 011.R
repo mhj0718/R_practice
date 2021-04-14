@@ -56,3 +56,20 @@ points(x, noise_fuc3(x), pch = 19)
 
 
 # 정규분포를 사용해서 잡음을 모델링하게 된다.
+# rnorm()을 사용한 오차의 모델링
+
+range_vec <- 1:20
+plot(range_vec, true_fuc(range_vec), 
+     type = 'l', lty = 2)
+
+true_fuc <- function(x){
+  result <- x * 3 + 20
+  return(result)
+}
+
+x <- c(2,6,3,7,4,6,5,1,9,8,10)
+r_noise <- rnorm(11) * 2
+
+y <- true_fuc(x) + r_noise
+plot(x,y,pch=19,ylim = c(10,55))
+abline(20, 3, lty = 2)
